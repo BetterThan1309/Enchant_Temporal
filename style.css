@@ -1,48 +1,124 @@
+/* General Body Styling */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: #2c3e50; /* Dark blue-gray background */
+    color: #ecf0f1; /* Light text color */
     margin: 0;
-    padding: 20px;
+    padding: 20px; /* Consistent padding */
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; /* Align items to the top */
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
+/* Container for the entire simulation */
 .container {
-    background-color: #34495e;
+    background-color: #34495e; /* Slightly lighter dark blue-gray */
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    width: 90%;
-    max-width: 1200px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    width: 100%; /* Use 100% width then constrain with max-width */
+    max-width: 900px; /* Max-width for consistency */
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 30px; /* Add margin-top for spacing from top */
+    margin-bottom: 30px; /* Add margin-bottom for spacing from bottom */
+}
+
+/* Main Header Styling */
+.main-header {
+    background-color: #1a252f; /* Darker background than container */
+    padding: 15px 25px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.site-title {
+    color: #e74c3c; /* Reddish-orange for main title */
+    margin: 0;
+    font-size: 2.2em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.main-nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-nav button {
+    background-color: #3498db; /* Blue for navigation buttons */
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.main-nav button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+.main-nav button:active {
+    transform: translateY(0);
+}
+
+/* Headings */
 h1, h2, h3 {
-    color: #ecf0f1;
+    color: #ecf0f1; /* Default heading color for most sections */
     margin-bottom: 20px;
 }
 
+/* Item Information Section */
 .item-info {
-    margin-bottom: 30px;
-}
-
-#item-image {
-    width: 150px;
-    height: 150px;
-    border-radius: 8px;
-    border: 3px solid #f39c12;
-    background-color: #2c3e50;
-    margin-bottom: 10px;
-}
-
-.enchant-slots {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.item-info img {
+    width: 80px; /* Standardized image size */
+    height: 80px; /* Standardized image size */
+    margin-right: 20px;
+    border: 2px solid #e74c3c;
+    border-radius: 5px;
+    object-fit: contain;
+}
+
+.item-info h2 {
+    color: #ecf0f1;
+    font-size: 1.8em;
+    margin: 0;
+}
+
+/* Enchant Slots Section */
+.enchant-slots {
+    display: grid; /* Use grid for more flexible layout */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive columns */
+    gap: 25px;
     margin-bottom: 30px;
 }
 
@@ -50,35 +126,45 @@ h1, h2, h3 {
     background-color: #2c3e50;
     padding: 20px;
     border-radius: 8px;
-    border: 2px solid #2980b9;
-    width: 30%;
-    min-width: 280px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    border: 1px solid #e74c3c; /* Border for each slot */
 }
 
 .slot h3 {
+    color: #3498db; /* Blue for slot titles */
     margin-top: 0;
-    color: #f1c40f;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    text-align: center;
 }
 
 .current-enchant {
+    background-color: #3f5166;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex; /* Use flex for alignment */
+    justify-content: space-between;
+    align-items: center;
     font-size: 1.1em;
-    margin-bottom: 15px;
-    color: #bdc3c7;
+    color: #a4e4e9; /* Light cyan for current enchant */
 }
 
 .enchant-level {
     font-weight: bold;
-    color: #2ecc71;
+    color: #f1c40f; /* Yellow for enchant level */
 }
 
+/* Form Elements (Select, Buttons) */
 select, button {
-    width: calc(100% - 20px);
+    width: 100%; /* Full width for consistency */
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Consistent margin-bottom */
     border-radius: 5px;
     border: none;
     font-size: 1em;
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 select {
@@ -103,18 +189,95 @@ button:disabled {
     cursor: not-allowed;
 }
 
+/* Specific Button Styles */
 .enchant-knight-button {
-    background-color: #e67e22;
+    background-color: #e67e22; /* Orange */
 }
 .enchant-knight-button:hover {
-    background-color: #d35400;
+    background-color: #d35400; /* Darker orange on hover */
 }
 
 .upgrade-button {
-    background-color: #2ecc71;
+    background-color: #9b59b6; /* Purple */
 }
 .upgrade-button:hover {
-    background-color: #27ae60;
+    background-color: #8e44ad; /* Darker purple on hover */
+}
+
+/* Base Enchant Section */
+.base-enchant-section {
+    margin-bottom: 20px;
+}
+
+.base-enchant-section label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #ecf0f1;
+}
+
+.enchant-type-selection {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.select-enchant-type {
+    background-color: #e67e22; /* Orange */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+    flex-grow: 1;
+}
+
+.select-enchant-type[data-type="random"] { /* เพิ่มสีให้กับปุ่ม Random */
+    background-color: #e74c3c; 
+}
+.select-enchant-type[data-type="guarantee"] { /* เพิ่มสีให้กับปุ่ม Guarantee */
+    background-color: #f39c12;
+}
+.select-enchant-type[data-type="knight"] { /* เพิ่มสีให้กับปุ่ม Knight */
+    background-color: #c0392b; /* เดิมเป็นสี active, เปลี่ยนเป็นสีของ Knight โดยตรง */
+}
+
+.select-enchant-type:hover {
+    filter: brightness(1.1); /* ทำให้สว่างขึ้นเล็กน้อยเมื่อ Hover */
+}
+
+/* สถานะ Active สำหรับปุ่มเลือกประเภท Enchant */
+.select-enchant-type.active {
+    filter: brightness(1.2); /* สว่างขึ้นอีกเมื่อ Active */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid #ffffff; /* เพิ่มเส้นขอบเพื่อเน้น */
+}
+
+.enchant-options-container {
+    padding: 15px;
+    background-color: #3f5166;
+    border-radius: 5px;
+    /* Removed 'display: none;' from HTML, controlled by JS */
+}
+
+.enchant-button {
+    background-color: #27ae60; /* Green */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.enchant-button:hover {
+    background-color: #229a56; /* Darker green on hover */
 }
 
 .base-enchant-cost, .upgrade-cost {
@@ -125,63 +288,167 @@ button:disabled {
     padding-left: 10px;
 }
 
-.upgrade-log {
-    font-size: 0.9em;
-    margin-top: 10px;
-    max-height: 100px;
-    overflow-y: auto;
-    border: 1px solid #4a627a;
-    padding: 5px;
+.base-enchant-cost strong, .upgrade-cost strong {
+    color: #f1c40f; /* Yellow for cost titles */
+}
+
+.guarantee-enchant-options select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
     border-radius: 5px;
-    background-color: #2c3e50;
+    border: 1px solid #7f8c8d;
+    background-color: #ecf0f1;
+    color: #34495e;
+    font-size: 1em;
+}
+
+/* Upgrade Section */
+.upgrade-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #4a627a; /* Separator line */
+    text-align: center;
+}
+
+.upgrade-log {
+    background-color: #3f5166;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    height: 100px; /* Fixed height for log */
+    overflow-y: auto; /* Scroll if content overflows */
     text-align: left;
+    border: 1px solid #5a748d;
 }
 
-.log-success {
-    color: #2ecc71;
-}
-.log-fail {
-    color: #e74c3c;
+.upgrade-log p {
+    margin: 3px 0;
+    color: #ecf0f1;
 }
 
+.upgrade-log .log-success {
+    color: #2ecc71; /* Green for success */
+}
+
+.upgrade-log .log-fail {
+    color: #e74c3c; /* Red for failure */
+}
+
+/* Reset Options */
 .reset-options {
     margin-top: 30px;
-    margin-bottom: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #4a627a;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
 }
 
 .reset-options button {
-    width: auto;
-    padding: 12px 25px;
-    margin: 0 10px;
-    background-color: #e74c3c;
+    background-color: #f39c12; /* Orange-yellow for reset buttons */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    flex-grow: 1;
+    max-width: 300px; /* Max width for individual buttons */
+}
+
+.reset-options button#restart-simulation {
+    background-color: #c0392b; /* Darker red for restart */
 }
 
 .reset-options button:hover {
-    background-color: #c0392b;
+    background-color: #e67e22; /* Darker orange on hover */
 }
 
+.reset-options button#restart-simulation:hover {
+    background-color: #a32d22; /* Even darker red on hover */
+}
+
+/* Summary Section */
 .summary {
-    background-color: #2c3e50;
-    padding: 20px;
-    border-radius: 8px;
-    border: 2px solid #f39c12;
-    text-align: left;
     margin-top: 30px;
+    padding: 20px;
+    background-color: #2c3e50;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
 }
 
 .summary h2 {
-    color: #f39c12;
+    color: #f1c40f; /* Yellow for summary title */
     margin-top: 0;
     margin-bottom: 15px;
+    font-size: 1.8em;
     text-align: center;
 }
 
 .summary p {
+    margin: 8px 0;
     font-size: 1.1em;
-    margin-bottom: 8px;
+    color: #ecf0f1;
 }
 
 .summary span {
     font-weight: bold;
-    color: #f1c40f;
+    color: #2ecc71; /* Green for resource numbers */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Stack header items vertically */
+        align-items: center;
+    }
+
+    .site-title {
+        margin-bottom: 15px;
+        font-size: 1.8em;
+    }
+
+    .main-nav {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .main-nav button {
+        flex-grow: 1;
+        max-width: 150px;
+    }
+
+    .enchant-slots {
+        grid-template-columns: 1fr; /* Stack slots vertically */
+    }
+
+    .reset-options {
+        flex-direction: column; /* Stack reset buttons vertically */
+        align-items: stretch;
+    }
+
+    .reset-options button {
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .item-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .item-info img {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
 }

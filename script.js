@@ -195,7 +195,7 @@ function updateEnchantDisplay(slotNum) {
         } else if (optionName === "Spirit of Knight" && level === 1) { // Lv.1 ของ Knight เป็น Base Enchant
             displayLevelName = SPECIAL_OPTION_NAMES[optionName][level];
         } else if (optionName === "Spirit of Knight" && SPECIAL_OPTION_NAMES[optionName] && SPECIAL_OPTION_NAMES[optionName][level]) { // Knight LV.2+
-             displayLevelName = SPECIAL_OPTION_NAMES[optionName][level];
+            displayLevelName = SPECIAL_OPTION_NAMES[optionName][level];
         } else { // ออฟชั่นปกติ Lv2+
             displayLevelName = `${optionName} ${level}Lv`;
         }
@@ -206,6 +206,8 @@ function updateEnchantDisplay(slotNum) {
         upgradeSection.style.display = 'block'; // แสดงส่วน Upgrade
         updateUpgradeCostDisplay(slotNum);
     }
+    // อัปเดตสถานะปุ่ม Reset เมื่อมีการเปลี่ยนแปลงการแสดงผล Enchant
+    updateResetButtonStates();
 }
 
 // ฟังก์ชันอัปเดตการแสดงผลค่าใช้จ่ายในการ Upgrade
@@ -269,14 +271,8 @@ function logUpgrade(slotNum, message, type = 'info') {
     }
 }
 
-// *** ฟังก์ชัน canEnchantSlot และการตรวจสอบลำดับจะถูกลบออกไป ***
-
-
-
-
 // ฟังก์ชันสำหรับ Enchant (Base Enchant)
 function handleBaseEnchant(slotNum) {
-    // ไม่มีเงื่อนไขการตรวจสอบลำดับแล้ว
     const selectedOption = baseEnchantSelects[slotNum].value;
     if (!selectedOption) {
         alert("กรุณาเลือกออฟชั่นที่ต้องการ Enchant!");
@@ -305,7 +301,6 @@ function handleBaseEnchant(slotNum) {
 // ฟังก์ชันสำหรับ Enchant Spirit of Knight (เฉพาะ Slot 2)
 function handleKnightEnchant() {
     const slotNum = 2; // Spirit of Knight เฉพาะ Slot 2
-    // ไม่มีเงื่อนไขการตรวจสอบลำดับแล้ว
     if (enchantSlots[slotNum].level > 0) {
         alert("สล็อตนี้มีออฟชั่นอยู่แล้ว! หากต้องการเปลี่ยนต้อง Reset ก่อน");
         return;
@@ -381,6 +376,14 @@ function handleUpgradeEnchant(slotNum) {
 
 // ฟังก์ชันสำหรับ Reset Enchant ทั้งหมด (เฉพาะออฟชั่นบนไอเทม)
 function resetAllEnchant() {
+    // ตรวจสอบว่ามีออฟชั่นในสล็อต 2, 3, 4 อย่างน้อยหนึ่งช่องหรือไม่
+    const hasAnyEnchant = enchantSlots[2].level > 0 || enchantSlots[3].level > 0 || enchantSlots[4].level > 0;
+
+    if (!hasAnyEnchant) {
+        alert("ไม่สามารถ Reset Enchant ทั้งหมดได้: ไม่มีออฟชั่นใดๆ ที่ถูก Enchant อยู่!");
+        return; // หยุดการทำงานของฟังก์ชัน
+    }
+
     if (confirm("คุณแน่ใจหรือไม่ที่จะ Reset Enchant ทั้งหมด? จะใช้ Silvervine 20ea")) {
         totalResources.silvervine += 20;
         for (const slotNum in enchantSlots) {
@@ -394,9 +397,15 @@ function resetAllEnchant() {
 
 // ฟังก์ชันสำหรับ Reset Enchant Slot 2
 function resetSlot2Enchant() {
+    const slotNum = 2;
+    // ตรวจสอบว่า Slot 2 มีออฟชั่นอยู่หรือไม่
+    if (enchantSlots[slotNum].level === 0) {
+        alert("ไม่สามารถ Reset Enchant Slot 2 ได้: สล็อต 2 ยังว่างเปล่าอยู่!");
+        return; // หยุดการทำงานของฟังก์ชัน
+    }
+
     if (confirm("คุณแน่ใจหรือไม่ที่จะ Reset Enchant Slot 2? จะใช้ Silvervine 50ea")) {
         totalResources.silvervine += 50;
-        const slotNum = 2;
         enchantSlots[slotNum] = { name: "", level: 0 };
         updateEnchantDisplay(parseInt(slotNum));
         updateTotalResourcesDisplay();
@@ -406,6 +415,13 @@ function resetSlot2Enchant() {
 
 // ฟังก์ชันสำหรับ Reset ทั้งหมดและเริ่มต้นใหม่ (รวมทรัพยากร)
 function restartSimulation() {
+    // ตรวจสอบว่ามีออฟชั่นในสล็อตใดๆ หรือไม่ ก่อนที่จะอนุญาตให้รีเซ็ตทั้งหมด
+    const hasAnyEnchant = enchantSlots[2].level > 0 || enchantSlots[3].level > 0 || enchantSlots[4].level > 0;
+    if (!hasAnyEnchant && totalResources.temporalSpell === 0 && totalResources.temporalGemstone === 0 && totalResources.silvervine === 0 && totalResources.zeny === 0) {
+        alert("ไม่สามารถเริ่มการจำลองใหม่ได้: ไม่มีออฟชั่นใดๆ ถูก Enchant หรือทรัพยากรที่ใช้ไป!");
+        return;
+    }
+
     if (confirm("คุณแน่ใจหรือไม่ที่จะเริ่มการจำลองใหม่ทั้งหมด? ข้อมูลการ Enchant และทรัพยากรที่ใช้ไปจะถูกล้าง")) {
         // รีเซ็ตทรัพยากรทั้งหมด
         totalResources = {
@@ -431,6 +447,30 @@ function restartSimulation() {
         // แจ้งผู้ใช้
         alert("การจำลองเริ่มต้นใหม่เรียบร้อยแล้ว!");
     }
+}
+
+// ฟังก์ชันสำหรับอัปเดตสถานะปุ่ม Reset
+function updateResetButtonStates() {
+    const hasAnyEnchant = enchantSlots[2].level > 0 || enchantSlots[3].level > 0 || enchantSlots[4].level > 0;
+
+    // สำหรับปุ่ม resetAllEnchantButton
+    if (resetAllEnchantButton) {
+        resetAllEnchantButton.disabled = !hasAnyEnchant;
+        resetAllEnchantButton.title = hasAnyEnchant ? "" : "ไม่มีออฟชั่นใดๆ ที่ถูก Enchant อยู่";
+    }
+
+    // สำหรับปุ่ม resetSlot2EnchantButton
+    if (resetSlot2EnchantButton) {
+        const hasEnchantInSlot2 = enchantSlots[2].level > 0;
+        resetSlot2EnchantButton.disabled = !hasEnchantInSlot2;
+        resetSlot2EnchantButton.title = hasEnchantInSlot2 ? "" : "สล็อต 2 ยังว่างเปล่าอยู่";
+    }
+    
+    // สำหรับปุ่ม restartSimulationButton (รีเซ็ตทั้งหมดรวมทรัพยากร)
+    // ปุ่มนี้จะถูกปิดใช้งานก็ต่อเมื่อไม่มีออฟชั่นใดๆ และทรัพยากรที่ใช้ไปเป็น 0 ทั้งหมด
+    const totalSpentResources = totalResources.temporalSpell + totalResources.temporalGemstone + totalResources.silvervine + totalResources.zeny;
+    restartSimulationButton.disabled = !hasAnyEnchant && totalSpentResources === 0;
+    restartSimulationButton.title = (hasAnyEnchant || totalSpentResources > 0) ? "" : "ไม่มีออฟชั่นถูก Enchant และไม่มีทรัพยากรที่ใช้ไป";
 }
 
 
@@ -500,4 +540,5 @@ document.addEventListener('DOMContentLoaded', () => {
     updateEnchantDisplay(4);
     updateEnchantDisplay(3);
     updateEnchantDisplay(2);
+    updateResetButtonStates(); // เรียกใช้เพื่อตั้งค่าสถานะปุ่มเมื่อโหลดหน้า
 });

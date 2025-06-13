@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรแกรมจำลองการ Enchant ไอเทม</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="header-content">
+                <h1 class="site-title">โปรแกรมจำลองการ Enchant ไอเทมของคุณ</h1>
+                <nav class="main-nav">
+                    <button onclick="location.href='index.html'">ออฟมัพไก่</button>
+                    <button onclick="location.href='index2.html'">ออฟมัพ Exo-LT</button>
+                </nav>
+            </div>
+        </header>
+        <div class="item-info">
+            <img src="https://i.imgur.com/another_item.png" alt="รูปไอเทม" id="item-image">
+            <h2 id="item-name">ไอเท็มใหม่ของคุณ</h2>
+        </div>
+
+        <div class="enchant-slots">
+            <div class="slot" id="slot-4">
+                <h3>Slot 4</h3>
+                <div class="current-enchant">
+                    ปัจจุบัน: <span id="enchant-4-display">ว่าง</span>
+                    <span class="enchant-level" id="enchant-4-level-display"></span>
+                </div>
+                <div class="base-enchant-section">
+                    <label>ประเภท Enchant:</label>
+                    <div class="enchant-type-selection">
+                        <button class="select-enchant-type" data-slot="4" data-type="random">สุ่ม Option</button>
+                        <button class="select-enchant-type" data-slot="4" data-type="guarantee">การันตี Option</button>
+                    </div>
+
+                    <div class="enchant-options-container" id="enchant-options-4" style="display: none;">
+                        <div class="random-enchant-options" id="random-enchant-4">
+                            <button class="enchant-button" data-slot="4" data-method="random">Enchant Slot 4 (สุ่ม)</button>
+                            <div class="base-enchant-cost" id="base-enchant-4-random-cost"></div>
+                        </div>
+                        <div class="guarantee-enchant-options" id="guarantee-enchant-4" style="display: none;">
+                            <label for="guarantee-enchant-4-select">เลือกออฟชั่นที่ต้องการ:</label>
+                            <select id="guarantee-enchant-4-select">
+                                <option value="">-- เลือกออฟชั่น --</option>
+                                </select>
+                            <button class="enchant-button" data-slot="4" data-method="guarantee">Enchant Slot 4 (การันตี)</button>
+                            <div class="base-enchant-cost" id="base-enchant-4-guarantee-cost"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="upgrade-section" id="upgrade-4-section" style="display: none;">
+                    <button class="upgrade-button" data-slot="4">Upgrade</button>
+                    <div class="upgrade-cost" id="upgrade-4-cost"></div>
+                    <div class="upgrade-log" id="upgrade-4-log"></div>
+                </div>
+            </div>
+
+            <div class="slot" id="slot-3">
+                <h3>Slot 3</h3>
+                <div class="current-enchant">
+                    ปัจจุบัน: <span id="enchant-3-display">ว่าง</span>
+                    <span class="enchant-level" id="enchant-3-level-display"></span>
+                </div>
+                <div class="base-enchant-section">
+                    <label>ประเภท Enchant:</label>
+                    <div class="enchant-type-selection">
+                        <button class="select-enchant-type" data-slot="3" data-type="random">สุ่ม Option</button>
+                        <button class="select-enchant-type" data-slot="3" data-type="guarantee">การันตี Option</button>
+                    </div>
+
+                    <div class="enchant-options-container" id="enchant-options-3" style="display: none;">
+                        <div class="random-enchant-options" id="random-enchant-3">
+                            <button class="enchant-button" data-slot="3" data-method="random">Enchant Slot 3 (สุ่ม)</button>
+                            <div class="base-enchant-cost" id="base-enchant-3-random-cost"></div>
+                        </div>
+                        <div class="guarantee-enchant-options" id="guarantee-enchant-3" style="display: none;">
+                            <label for="guarantee-enchant-3-select">เลือกออฟชั่นที่ต้องการ:</label>
+                            <select id="guarantee-enchant-3-select">
+                                <option value="">-- เลือกออฟชั่น --</option>
+                                </select>
+                            <button class="enchant-button" data-slot="3" data-method="guarantee">Enchant Slot 3 (การันตี)</button>
+                            <div class="base-enchant-cost" id="base-enchant-3-guarantee-cost"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="upgrade-section" id="upgrade-3-section" style="display: none;">
+                    <button class="upgrade-button" data-slot="3">Upgrade</button>
+                    <div class="upgrade-cost" id="upgrade-3-cost"></div>
+                    <div class="upgrade-log" id="upgrade-3-log"></div>
+                </div>
+            </div>
+
+            <div class="slot" id="slot-2">
+                <h3>Slot 2</h3>
+                <div class="current-enchant">
+                    ปัจจุบัน: <span id="enchant-2-display">ว่าง</span>
+                    <span class="enchant-level" id="enchant-2-level-display"></span>
+                </div>
+                <div class="base-enchant-section">
+                    <label>ประเภท Enchant:</label>
+                    <div class="enchant-type-selection">
+                        <button class="select-enchant-type" data-slot="2" data-type="random">สุ่ม Option</button>
+                        <button class="select-enchant-type" data-slot="2" data-type="guarantee">การันตี Option</button>
+                        <button class="select-enchant-type" data-slot="2" data-type="knight">Spirit of Knight</button>
+                    </div>
+
+                    <div class="enchant-options-container" id="enchant-options-2" style="display: none;">
+                        <div class="random-enchant-options" id="random-enchant-2">
+                            <button class="enchant-button" data-slot="2" data-method="random">Enchant Slot 2 (สุ่ม)</button>
+                            <div class="base-enchant-cost" id="base-enchant-2-random-cost"></div>
+                        </div>
+                        <div class="guarantee-enchant-options" id="guarantee-enchant-2" style="display: none;">
+                            <label for="guarantee-enchant-2-select">เลือกออฟชั่นที่ต้องการ:</label>
+                            <select id="guarantee-enchant-2-select">
+                                <option value="">-- เลือกออฟชั่น --</option>
+                                </select>
+                            <button class="enchant-button" data-slot="2" data-method="guarantee">Enchant Slot 2 (การันตี)</button>
+                            <div class="base-enchant-cost" id="base-enchant-2-guarantee-cost"></div>
+                        </div>
+                        <div class="knight-enchant-options" id="knight-enchant-2" style="display: none;">
+                            <button class="enchant-button" data-slot="2" data-method="knight">Enchant Spirit of Knight Lv.1</button>
+                            <div class="base-enchant-cost" id="base-enchant-2-knight-cost"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="upgrade-section" id="upgrade-2-section" style="display: none;">
+                    <button class="upgrade-button" data-slot="2">Upgrade</button>
+                    <div class="upgrade-cost" id="upgrade-2-cost"></div>
+                    <div class="upgrade-log" id="upgrade-2-log"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reset-options">
+            <button class="reset-slot-button" data-slot="4">Reset Slot 4 (Silvervine 20ea)</button>
+            <button class="reset-slot-button" data-slot="3">Reset Slot 3 (Silvervine 20ea)</button>
+            <button class="reset-slot-button" data-slot="2">Reset Slot 2 (Silvervine 20ea)</button>
+            <button id="restart-simulation">เริ่มใหม่ทั้งหมด (รีเซ็ตทรัพยากร)</button>
+        </div>
+
+        <div class="summary">
+            <h2>สรุปทรัพยากรที่ใช้ไป</h2>
+            <p>Temporal Spell: <span id="total-temporal-spell">0</span> ea</p>
+            <p>Temporal Gemstone: <span id="total-temporal-gemstone">0</span> ea</p>
+            <p>Zeny: <span id="total-zeny">0</span></p>
+            <p>Silvervine: <span id="total-silvervine">0</span> ea</p>
+            <p>Enchant Ticket: <span id="total-enchant-ticket">0</span> ea</p>
+        </div>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>

@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>โปรแกรมจำลองการ Enchant ไอเทม</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
     <div class="container">
-        <h1>โปรแกรมจำลองการ Enchant ไอเทม</h1>
-
+        <header class="main-header">
+            <div class="header-content">
+                <h1 class="site-title">ระบบ Enchant White Knight Mantle</h1>
+                <nav class="main-nav">
+                    <button onclick="location.href='index.html'">ออฟมัพไก่</button>
+                    <button onclick="location.href='index2.html'">ออฟมัพ Exo-LT</button>
+                </nav>
+            </div>
+        </header>
         <div class="item-info">
             <img src="https://i.imgur.com/example_item.png" alt="รูปไอเทม" id="item-image">
             <h2 id="item-name">ไอเทมตัวอย่าง (ชื่อไอเทม)</h2>
@@ -102,7 +108,8 @@
         <div class="reset-options">
             <button id="reset-all-enchant">Reset Enchant ทั้งหมด (Silvervine 20ea)</button>
             <button id="reset-slot-2-enchant">Reset Enchant Slot 2 (Silvervine 50ea)</button>
-            <button id="restart-simulation">เริ่มใหม่ทั้งหมด (รีเซ็ตทรัพยากร)</button> </div>
+            <button id="restart-simulation">เริ่มใหม่ทั้งหมด (รีเซ็ตทรัพยากร)</button>
+        </div>
 
         <div class="summary">
             <h2>สรุปทรัพยากรที่ใช้ไป</h2>
@@ -113,6 +120,5 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
-</body>
+    <script src="script.js"></script> </body>
 </html>
