@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรแกรมจำลองการ Enchant Time Jewelry Amulet</title>
+    <link rel="stylesheet" href="style.css"> 
+    <style>
+        /* CSS เฉพาะสำหรับหน้านี้ ถ้ามีเพิ่มเติม */
+        .item-upgrade-section {
+            background-color: #4a69bd; /* สีน้ำเงินเข้ม */
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            color: #ecf0f1;
+        }
+        .item-upgrade-section h3 {
+            color: #f1c40f;
+            margin-top: 0;
+        }
+        .item-upgrade-warning {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #e74c3c;
+            border-radius: 5px;
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        .item-upgrade-buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+        .item-upgrade-buttons .upgrade-normal-button {
+            background-color: #3498db;
+            color: white;
+        }
+        .item-upgrade-buttons .upgrade-normal-button:hover:not(:disabled) {
+            background-color: #2980b9;
+        }
+        .item-upgrade-buttons .upgrade-guarantee-button {
+            background-color: #f39c12;
+            color: white;
+        }
+        .item-upgrade-buttons .upgrade-guarantee-button:hover:not(:disabled) {
+            background-color: #e67e22;
+        }
+        .item-upgrade-cost-display p {
+            margin: 5px 0;
+        }
+        .current-item-level {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <div class="header-content">
+                <h1 class="site-title">ระบบ Enchant Time Jewelry Amulet</h1>
+                <nav class="main-nav">
+                    <button onclick="location.href='index.html'">ออฟมัพไก่ (เก่า)</button>
+                    <button onclick="location.href='index2.html'">ออฟมัพ Exo-LT (เก่า)</button>
+                    <button onclick="location.href='index3.html'">ออฟ Time Jewelry Amulet</button>
+                </nav>
+            </div>
+        </header>
+
+        <div class="item-info">
+            <img src="https://www.divine-pride.net/img/items/collection/thROG/490159" alt="Time Jewelry Amulet Lv.2" id="item-image">
+            <h2 id="item-name">Time Jewelry Amulet <span id="current-item-level-display">(Lv.2)</span></h2>
+            <p class="current-item-level">ระดับไอเท็มปัจจุบัน: <span id="item-level-text">Lv.2</span></p>
+        </div>
+
+        <div class="item-upgrade-section" id="item-upgrade-section">
+            <h3>อัปเกรด Time Jewelry Amulet Lv.2 เป็น Lv.3</h3>
+            <p><strong>วัตถุดิบที่ใช้:</strong></p>
+            <div id="upgrade-item-cost-display">
+                <p>Temporal Spell: 10 ea</p>
+                <p>Temporal Gemstone: 5 ea</p>
+                <p>Silvervine: 10 ea</p>
+                <p>โอกาสสำเร็จ: 5%</p>
+            </div>
+            <p class="item-upgrade-warning">
+                <strong>คำเตือน:</strong> หากใช้ Time Jewelry Amulet (Lv.2) ที่มี Option และ Card อยู่แล้วมาอัพเกรด จะทำให้ Option ทั้งหมดพร้อม Card สูญหายไป!
+            </p>
+            <div class="item-upgrade-buttons">
+                <button id="upgrade-item-normal-button" class="upgrade-normal-button">อัปเกรด (โอกาส 5%)</button>
+                <button id="upgrade-item-guarantee-button" class="upgrade-guarantee-button">การันตีอัปเกรด (ใช้ Time Jewelry Amulet Blessing)</button>
+            </div>
+            <div class="upgrade-log" id="item-upgrade-log"></div>
+        </div>
+        
+        <div class="enchant-slots" id="enchant-slots-section">
+            <div class="slot" id="slot-4">
+                <h3>Slot 4</h3>
+                <div class="current-enchant">
+                    ปัจจุบัน: <span id="enchant-4-display">ว่าง</span>
+                </div>
+                <div class="base-enchant-section" id="base-enchant-4-section">
+                    <button class="enchant-button" data-slot="4">Enchant Slot 4 (สุ่ม)</button>
+                    <div class="base-enchant-cost" id="base-enchant-4-cost"></div>
+                </div>
+                <div class="upgrade-section" id="upgrade-4-section" style="display: none;">
+                    </div>
+                <div class="upgrade-log" id="upgrade-4-log"></div>
+            </div>
+
+            <div class="slot" id="slot-3">
+                <h3>Slot 3</h3>
+                <div class="current-enchant">
+                    ปัจจุบัน: <span id="enchant-3-display">ว่าง</span>
+                </div>
+                <div class="base-enchant-section" id="base-enchant-3-section">
+                    <label for="base-enchant-3-select">เลือกออฟชั่น:</label>
+                    <select id="base-enchant-3-select">
+                        </select>
+                    <button class="enchant-button" data-slot="3">Enchant Slot 3</button>
+                    <div class="base-enchant-cost" id="base-enchant-3-cost"></div>
+                </div>
+                <div class="upgrade-section" id="upgrade-3-section" style="display: none;">
+                    </div>
+                <div class="upgrade-log" id="upgrade-3-log"></div>
+            </div>
+        </div>
+
+        <div class="reset-options">
+            <button id="reset-all-enchant">Reset Enchant ทั้งหมด</button>
+            <button id="restart-simulation">เริ่มใหม่ทั้งหมด (รีเซ็ตทรัพยากร)</button>
+        </div>
+
+        <div class="summary">
+            <h2>สรุปทรัพยากรที่ใช้ไป</h2>
+            <p>Temporal Spell: <span id="total-temporal-spell">0</span> ea</p>
+            <p>Temporal Gemstone: <span id="total-temporal-gemstone">0</span> ea</p>
+            <p>Silvervine: <span id="total-silvervine">0</span> ea</p>
+            <p>Zeny: <span id="total-zeny">0</span></p>
+            <p>Time Jewelry Amulet Blessing: <span id="total-time-jewelry-amulet-blessing">0</span> ea</p>
+        </div>
+    </div>
+
+    <script src="script3.js"></script>
+</body>
+</html>
