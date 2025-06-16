@@ -1,8 +1,8 @@
 // --- ข้อมูลเกม (ปรับแก้ได้ตามต้องการ) ---
 const ITEM_NAME_LV2 = "Time Jewelry Amulet"; // ชื่อไอเทม Lv.2
-const ITEM_IMAGE_URL_LV2 = "https://www.divine-pride.net/img/items/collection/thROG/490159"; // URL รูปไอเทม Lv.2
+const ITEM_IMAGE_URL_LV2 = "https://www.divine-pride.net/img/items/collection/thROG/490583"; // URL รูปไอเทม Lv.2
 const ITEM_NAME_LV3 = "Time Jewelry Amulet"; // ชื่อไอเทม Lv.3
-const ITEM_IMAGE_URL_LV3 = "https://www.divine-pride.net/img/items/collection/thROG/490160"; // URL รูปไอเทม Lv.3 (ตัวอย่าง)
+const ITEM_IMAGE_URL_LV3 = "https://www.divine-pride.net/img/items/collection/thROG/490584"; // URL รูปไอเทม Lv.3 (ตัวอย่าง)
 
 // ข้อมูล Enchant สำหรับ Time Jewelry Amulet Lv.2
 const ENCHANT_DATA_LV2 = {
