@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RO Costume Enchant Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+ <div class="header-content">
+                <h1 class="site-title">ระบบ Enchant White Knight Mantle</h1>
+                <nav class="main-nav">
+                    <button onclick="location.href='index.html'">ออฟมัพไก่</button>
+                    <button onclick="location.href='index2.html'">ออฟมัพ Exo-LT</button>
+                    <button onclick="location.href='index3.html'">ออฟ Time Jewelry Amulet</button>
+                    <button onclick="location.href='index4.html'">ระบบ Enchant Cosume</button>
+                </nav>
+            </div>
+
+        <div class="card">
+            <h2>⚙️ ตั้งค่าการจำลอง</h2>
+            <div class="setting-group">
+                <label for="costume-select">เลือกประเภทคอสตูม:</label>
+                <select id="costume-select">
+                    <option value="normal">คอสตูมธรรมดา</option>
+                    <option value="loft">คอสตูม Loft</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label for="enchant-category">เลือกหมวดหินออฟ:</label>
+                <select id="enchant-category">
+                    <option value="">-- เลือกหมวดหิน --</option>
+                    <option value="job">หินออฟอาชีพ (Job Stone)</option>
+                    <option value="effect">หินออฟเอฟเฟค (Effect Stone)</option>
+                    <option value="loft">หินออฟ Loft (Loft Stone)</option>
+                </select>
+            </div>
+
+            <div class="setting-group" id="stone-selection-container" style="display: none;">
+                <label for="enchant-stone">เลือกหินออฟที่ต้องการ:</label>
+                <select id="enchant-stone">
+                    <option value="">-- เลือกหิน --</option>
+                </select>
+            </div>
+            
+            <button id="enchant-button" class="action-button" disabled>✨ เริ่มออฟ ✨</button>
+            <p class="enchant-rate">อัตราสำเร็จ: <span class="rate">50%</span></p>
+        </div>
+
+        <div class="card result-card">
+            <h2>📜 ผลการออฟ</h2>
+            <p id="enchant-result" class="result-message"></p>
+            <div class="stats-grid">
+                <div>
+                    <h3>จำนวนการออฟทั้งหมด</h3>
+                    <p class="stat-value" id="total-attempts">0 ครั้ง</p>
+                </div>
+                <div>
+                    <h3>ออฟสำเร็จ</h3>
+                    <p class="stat-value success-count" id="success-count">0 ครั้ง</p>
+                </div>
+                <div>
+                    <h3>ออฟล้มเหลว</h3>
+                    <p class="stat-value fail-count" id="fail-count">0 ครั้ง</p>
+                </div>
+                </div>
+            <button id="reset-button" class="reset-button">🔄 รีเซ็ตสถิติ</button>
+        </div>
+    </div>
+
+    <script src="script4.js"></script>
+</body>
+</html>
